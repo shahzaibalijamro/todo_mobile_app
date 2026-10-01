@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/todo_model.dart';
+import 'package:todo_app/widgets/todo_app_bar.dart';
+import 'package:todo_app/widgets/todo_progress_section.dart';
 
 class TodoScreen extends StatefulWidget {
   const new({super.key});
@@ -27,33 +30,20 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(CustomColors.backgroundColor),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           addTodo();
         },
         child: Icon(Icons.add),
       ),
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.green,
-        title: Text(
-          "Todo App",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
-        ),
-        leading: Padding(
-          padding: EdgeInsets.all(5),
-          child: CircleAvatar(
-            backgroundImage: AssetImage("assets/images/image.png"),
-          ),
-        ),
-      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          todoAppBar(),
+          progressSection(),
           Expanded(
+            flex: 3,
             child: ListView.builder(
               padding: EdgeInsets.all(20),
               itemBuilder: (context, index) {
@@ -71,10 +61,8 @@ class _TodoScreenState extends State<TodoScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("${currentTodo.title}"),
-                          Text(
-                            "${currentTodo.description != null ? currentTodo.description : "No description"}",
-                          ),
+                          Text(currentTodo.title),
+                          Text(currentTodo.description ?? "No description"),
                         ],
                       ),
                     ],
