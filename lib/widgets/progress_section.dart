@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
-import 'package:todo_app/widgets/custom_progress_bar.dart';
 
 Widget progressSection() {
   return Padding(
@@ -12,7 +11,7 @@ Widget progressSection() {
         Text(
           "Today",
           style: GoogleFonts.googleSansFlex(
-            fontWeight: FontWeight.w800,
+            fontWeight: FontWeight.w700,
             fontSize: 30,
           ),
         ),
@@ -62,7 +61,9 @@ Widget progressSection() {
                         value: 4 / 12,
                         minHeight: 14,
                         color: Color(CustomColors.primaryPurple),
-                        backgroundColor: Color(CustomColors.paleLavender),
+                        backgroundColor: Color(
+                          CustomColors.secondaryBackgroundColor,
+                        ),
                       ),
                     ),
                     // progress
@@ -70,7 +71,7 @@ Widget progressSection() {
                 ),
               ),
               CircleAvatar(
-                backgroundColor: Color(CustomColors.paleLavender),
+                backgroundColor: Color(CustomColors.secondaryBackgroundColor),
                 // backgroundImage: AssetImage("assets/images/image.png"),
                 radius: 32,
                 child: Icon(

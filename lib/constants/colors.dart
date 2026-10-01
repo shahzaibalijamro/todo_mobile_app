@@ -5,4 +5,5 @@ class CustomColors {
   static const primaryPurple = 0xFF5C58EB;
   static const paleLavender = 0xFFE9E8FF;
   static const whiteCards = 0xFFFFFFFFF;
+  static const secondaryBackgroundColor = 0xFFd6d5fc;
 }
