@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/widgets/bottom_add_task_sheet.dart';
 import 'package:todo_app/widgets/tasks_section.dart';
 import 'package:todo_app/widgets/app_bar.dart';
 import 'package:todo_app/widgets/progress_section.dart';
@@ -17,6 +18,237 @@ class _TaskScreenState extends State<TaskScreen> {
   List<Task> taskList = [
     Task(
       name: "First Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.work,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.personal,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.learning,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Second Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Third Todo",
+      category: Category.health,
+      day: DateTime(2006),
+      reminder: true,
+      time: DateTime.now(),
+    ),
+    Task(
+      name: "Fourth Todo",
       category: Category.health,
       day: DateTime(2006),
       reminder: true,
@@ -45,52 +277,19 @@ class _TaskScreenState extends State<TaskScreen> {
     ),
   ];
 
+  void updateState() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     void addTodo() {
       showModalBottomSheet(
         context: context,
+        useSafeArea: true,
+        isDismissible: false,
         builder: (context) {
-          return Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                SizedBox(height: 7),
-                Container(
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: Color(CustomColors.paleLavender),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  height: 12,
-                ),
-                SizedBox(height: 7),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Add Task",
-                      style: GoogleFonts.googleSansFlex(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 22,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.close,
-                        color: Color(CustomColors.primaryPurple),
-                        size: 25,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
+          return addTaskSheet(context);
         },
       );
     }
@@ -107,9 +306,9 @@ class _TaskScreenState extends State<TaskScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            todoAppBar(),
+            customAppBar(),
             progressSection(),
-            tasksSection(taskList: taskList),
+            tasksSection(updateState, taskList: taskList),
           ],
         ),
       ),

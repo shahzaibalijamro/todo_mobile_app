@@ -13,6 +13,7 @@ Widget progressSection() {
           style: GoogleFonts.googleSansFlex(
             fontWeight: FontWeight.w700,
             fontSize: 30,
+            color: Color(CustomColors.darkNavyText),
           ),
         ),
         Text(
@@ -24,7 +25,7 @@ Widget progressSection() {
           ),
         ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 20),
+          margin: EdgeInsets.symmetric(vertical: 15),
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Color(CustomColors.paleLavender),
@@ -44,6 +45,7 @@ Widget progressSection() {
                       style: GoogleFonts.googleSansFlex(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
+                        color: Color(CustomColors.darkNavyText),
                       ),
                     ),
                     Text(

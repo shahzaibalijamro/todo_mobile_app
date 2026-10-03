@@ -4,7 +4,10 @@ import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/widgets/task_tiles.dart';
 
-Widget tasksSection({required List<Task> taskList}) {
+Widget tasksSection(
+  void Function() updateState, {
+  required List<Task> taskList,
+}) {
   return Expanded(
     child: Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
@@ -18,13 +21,16 @@ Widget tasksSection({required List<Task> taskList}) {
                 style: GoogleFonts.googleSansFlex(
                   fontWeight: FontWeight.w700,
                   fontSize: 22,
+                  color: Color(CustomColors.darkNavyText),
                 ),
               ),
               Row(
-                spacing: 4,
                 children: [
                   TextButton.icon(
-                    iconAlignment: IconAlignment.end,
+                    style: TextButton.styleFrom(
+                      iconAlignment: IconAlignment.end,
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                    ),
                     onPressed: () {},
                     label: Text(
                       "See all",
@@ -47,10 +53,11 @@ Widget tasksSection({required List<Task> taskList}) {
           Expanded(
             flex: 3,
             child: ListView.builder(
-              padding: EdgeInsets.only(top: 10),
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.only(top: 10, bottom: 50),
               itemBuilder: (context, index) {
                 Task currentTask = taskList[index];
-                return taskTile(currentTask);
+                return taskTile(updateState, currentTask);
               },
               itemCount: taskList.length,
             ),

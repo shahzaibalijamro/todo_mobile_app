@@ -6,4 +6,13 @@ class CustomColors {
   static const paleLavender = 0xFFE9E8FF;
   static const whiteCards = 0xFFFFFFFFF;
   static const secondaryBackgroundColor = 0xFFd6d5fc;
+  static const healthBackgroundColor = 0xFFe7f8f1;
+  static const healthIndicatorColor = 0xFF45bf7f;
+  static const workBackgroundColor = 0xFFeeeefd;
+  static const workIndicatorColor = 0xFF6064ef;
+  static const personalBackgroundColor = 0xFFfeede1;
+  static const personalIndicatorColor = 0xFFf77736;
+  static const learningBackgroundColor = 0xFFfdeaf1;
+  static const learningIndicatorColor = 0xFFe94b8f;
+  static const dragHandleColor = 0xFFb9bad2;
 }

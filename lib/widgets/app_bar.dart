@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
+import 'package:todo_app/utils/date_time_utils.dart';
 
-Widget todoAppBar() {
+Widget customAppBar() {
   return Container(
     width: double.infinity,
     padding: EdgeInsets.all(20),
@@ -18,10 +19,11 @@ Widget todoAppBar() {
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w700,
                 fontSize: 27,
+                color: Color(CustomColors.darkNavyText),
               ),
             ),
             Text(
-              "Wednesday, October 1",
+              getCurrentDay(),
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w500,
                 color: Color(CustomColors.mutedText),

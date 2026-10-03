@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/utils/date_time_utils.dart';
+import 'package:todo_app/widgets/category_pill.dart';
 
-Widget taskTile(Task currentTask) {
+Widget taskTile(void Function() updateState, Task currentTask) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
-      color: Colors.white,
+      color: Color(CustomColors.whiteCards),
     ),
-    padding: EdgeInsetsGeometry.all(10),
+    padding: EdgeInsetsGeometry.all(15),
     margin: EdgeInsets.only(bottom: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -16,8 +19,8 @@ Widget taskTile(Task currentTask) {
       spacing: 15,
       children: [
         Container(
-          width: 28,
-          height: 28,
+          width: 35,
+          height: 35,
           decoration: BoxDecoration(
             color: Color(
               currentTask.isCompleted ? CustomColors.primaryPurple : 0xFFFFFFFF,
@@ -28,14 +31,79 @@ Widget taskTile(Task currentTask) {
             ),
             borderRadius: BorderRadius.circular(50),
           ),
-          child: Icon(Icons.check, color: Colors.white, size: 20),
+          child: IconButton(
+            iconSize: 20,
+            onPressed: () {
+              currentTask.isCompleted = !currentTask.isCompleted;
+              updateState();
+            },
+            icon: Icon(Icons.check, color: Colors.white),
+          ),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(currentTask.name),
-            Text(currentTask.notes ?? "No notes"),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 4,
+            children: [
+              Text(
+                currentTask.name,
+                style: GoogleFonts.googleSansFlex(
+                  fontSize: 16,
+                  fontWeight: FontWeight(600),
+                  color: Color(
+                    currentTask.isCompleted
+                        ? CustomColors.mutedText
+                        : CustomColors.darkNavyText,
+                  ),
+                  decoration: currentTask.isCompleted
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                ),
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.schedule,
+                    size: 16,
+                    color: Color(CustomColors.mutedText),
+                  ),
+                  SizedBox(width: 5),
+                  Text(
+                    formatDateTimeIntoTime(currentTask.time),
+                    style: GoogleFonts.googleSansFlex(
+                      color: Color(CustomColors.mutedText),
+                    ),
+                  ),
+                  SizedBox(width: 18),
+                  categoryPill(currentTask.category),
+                ],
+              ),
+            ],
+          ),
+        ),
+        // TextButton(
+        //   onPressed: () {},
+        //   style: TextButton.styleFrom(
+        //     padding: EdgeInsets.symmetric(horizontal: 0),
+
+        //   ),
+        //   child: Icon(
+        //     Icons.more_vert,
+        //     color: Color(CustomColors.mutedText),
+        //     // size: 25,
+        //     fontWeight: FontWeight(500),
+        //   ),
+        // ),
+        InkWell(
+          onTap: () {
+            print("Taspped");
+          },
+          child: Icon(
+            Icons.more_vert,
+            color: Color(CustomColors.mutedText),
+            size: 25,
+            fontWeight: FontWeight(500),
+          ),
         ),
       ],
     ),
