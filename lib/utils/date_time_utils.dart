@@ -1,37 +1,21 @@
+import 'package:intl/intl.dart';
+
 String formatDateTimeIntoTime(DateTime dateTime) {
-  if (dateTime.hour == 12) {
-    return "${dateTime.hour}:${dateTime.minute} PM";
-  }
-  if (dateTime.hour < 12) {
-    return "${dateTime.hour}:${dateTime.minute} AM";
-  }
-  return "${dateTime.hour - 12}:${dateTime.minute} PM";
+  return DateFormat('h:mm a').format(dateTime);
 }
 
 String getCurrentDay() {
-  List<String> daysOfWeek = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-  List<String> monthsOfYear = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   DateTime rightNow = DateTime.now();
-  return "${daysOfWeek[rightNow.weekday - 1]}, ${monthsOfYear[rightNow.weekday - 1]} ${rightNow.day}";
+  return DateFormat('EEEE, MMMM d').format(rightNow);
+}
+
+String formatDateForDatePicker(DateTime dateTime) {
+  DateTime rightNow = DateTime.now();
+  if (dateTime.day == rightNow.day) {
+    return "Today";
+  }
+  if (dateTime.day == rightNow.day + 1) {
+    return "Tomorrow";
+  }
+  return DateFormat("dd/MM/yyyy").format(dateTime);
 }

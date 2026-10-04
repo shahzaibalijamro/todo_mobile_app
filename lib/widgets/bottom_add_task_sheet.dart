@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
+import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/widgets/category_selector.dart';
+import 'package:todo_app/widgets/date_picker.dart';
 import 'package:todo_app/widgets/text_field.dart';
+import 'package:todo_app/widgets/time_picker.dart';
 
 Widget addTaskSheet(BuildContext context) {
   final taskController = TextEditingController();
   final notesController = TextEditingController();
+
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+
+  Category selectedCategory = Category.work;
+
+  print(selectedTime);
+
   return Container(
     width: double.infinity,
     decoration: BoxDecoration(
@@ -84,9 +96,29 @@ Widget addTaskSheet(BuildContext context) {
               maxLines: 3,
             ),
             SizedBox(height: 10),
-            Row(),
           ],
         ),
+        Row(
+          spacing: 10,
+          children: [
+            Expanded(
+              child: TaskDatePicker(
+                onDateSelected: (date) {
+                  selectedDate = date;
+                },
+              ),
+            ),
+            Expanded(
+              child: TaskTimePicker(
+                onTimeSelected: (time) {
+                  selectedTime = time;
+                },
+              ),
+            ),
+            // TaskTimePicker(),
+          ],
+        ),
+        CategorySelector(selectedCategory: selectedCategory),
       ],
     ),
   );

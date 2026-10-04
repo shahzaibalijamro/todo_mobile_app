@@ -3,38 +3,36 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/utils/date_time_utils.dart';
 
-class TaskDatePicker extends StatefulWidget {
-  final Function(DateTime) onDateSelected;
-  const new({super.key, required this.onDateSelected});
+class TaskTimePicker extends StatefulWidget {
+  final Function(TimeOfDay) onTimeSelected;
+  const new({super.key, required this.onTimeSelected});
 
   @override
-  State<TaskDatePicker> createState() => _TaskDatePickerState();
+  State<TaskTimePicker> createState() => _TaskTimePickerState();
 }
 
-class _TaskDatePickerState extends State<TaskDatePicker> {
-  DateTime selectedDate = DateTime.now();
+class _TaskTimePickerState extends State<TaskTimePicker> {
+  TimeOfDay selectedTime = TimeOfDay.now();
 
-  Future<void> pickDate() async {
-    final date = await showDatePicker(
+  Future<void> pickTime() async {
+    final time = await showTimePicker(
       context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2030),
+      initialTime: selectedTime,
     );
 
-    if (date != null) {
+    if (time != null) {
       setState(() {
-        selectedDate = date;
+        selectedTime = time;
       });
 
-      widget.onDateSelected(date);
+      widget.onTimeSelected(time);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: pickDate,
+      onTap: pickTime,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
@@ -44,7 +42,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
         child: Row(
           children: [
             Icon(
-              Icons.calendar_today,
+              Icons.access_time,
               size: 20,
               color: Color(CustomColors.mutedText),
             ),
@@ -53,7 +51,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Date",
+                  "Time",
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 8,
                     fontWeight: FontWeight(500),
@@ -61,7 +59,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
                   ),
                 ),
                 Text(
-                  formatDateForDatePicker(selectedDate),
+                  selectedTime.format(context),
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 12,
                     fontWeight: FontWeight(500),
