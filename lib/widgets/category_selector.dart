@@ -6,180 +6,223 @@ import 'package:todo_app/widgets/category_pill.dart';
 
 class CategorySelector extends StatelessWidget {
   final Category selectedCategory;
+  final Function(Category selectedCategory) onTap;
 
   const CategorySelector({
     super.key,
     required this.selectedCategory,
-    // required this.onTap,
+    required this.onTap,
   });
+
+  void selectCategory(Category category) {
+    onTap(category);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 7,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Category",
-          style: GoogleFonts.googleSansFlex(
-            color: Color(CustomColors.darkNavyText),
-            fontWeight: FontWeight(700),
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        spacing: 7,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 5),
+          Text(
+            "Category",
+            style: GoogleFonts.googleSansFlex(
+              color: const Color(CustomColors.darkNavyText),
+              fontWeight: const FontWeight(700),
+            ),
           ),
-        ),
-        Row(
-          spacing: 7,
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(getCategoryColor(Category.work)[0]),
-                  borderRadius: BorderRadius.circular(15),
-                  border: BoxBorder.all(
-                    color: Color(getCategoryColor(Category.work)[1]),
-                    width: Category.work == selectedCategory ? 1 : 0,
-                  ),
-                ),
+          Wrap(
+            spacing: 7,
+            runSpacing: 7,
+            children: [
+              InkWell(
+                onTap: () => selectCategory(Category.work),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Color(getCategoryColor(Category.work)[0]),
+                    borderRadius: BorderRadius.circular(12),
+                    border: BoxBorder.all(
+                      color: Color(getCategoryColor(Category.work)[1]),
+                      width: Category.work == selectedCategory ? 1 : 0,
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
 
-                  child: Row(
-                    spacing: 7,
-                    children: [
-                      //category indicator
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Color(getCategoryColor(Category.work)[1]),
-                          borderRadius: BorderRadius.circular(50),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 7,
+                      children: [
+                        //category indicator
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: Color(getCategoryColor(Category.work)[1]),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Work",
-                        style: GoogleFonts.googleSansFlex(
-                          color: Color(CustomColors.darkNavyText),
-                          fontWeight: FontWeight(500),
+                        Text(
+                          "Work",
+                          style: GoogleFonts.googleSansFlex(
+                            color: const Color(CustomColors.darkNavyText),
+                            fontWeight: const FontWeight(500),
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(getCategoryColor(Category.personal)[0]),
-                  borderRadius: BorderRadius.circular(15),
-                  border: BoxBorder.all(
-                    color: Color(getCategoryColor(Category.personal)[1]),
-                    width: Category.personal == selectedCategory ? 1 : 0,
-                  ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
 
-                  child: Row(
-                    spacing: 7,
-                    children: [
-                      //category indicator
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Color(getCategoryColor(Category.personal)[1]),
-                          borderRadius: BorderRadius.circular(50),
+              InkWell(
+                onTap: () => selectCategory(Category.personal),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(getCategoryColor(Category.personal)[0]),
+                    borderRadius: BorderRadius.circular(12),
+                    border: BoxBorder.all(
+                      color: Color(getCategoryColor(Category.personal)[1]),
+                      width: Category.personal == selectedCategory ? 1 : 0,
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 7,
+                      children: [
+                        //category indicator
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: Color(
+                              getCategoryColor(Category.personal)[1],
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Personal",
-                        style: GoogleFonts.googleSansFlex(
-                          color: Color(CustomColors.darkNavyText),
-                          fontWeight: FontWeight(500),
+                        Text(
+                          "Personal",
+                          style: GoogleFonts.googleSansFlex(
+                            color: const Color(CustomColors.darkNavyText),
+                            fontWeight: const FontWeight(500),
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(getCategoryColor(Category.health)[0]),
-                  borderRadius: BorderRadius.circular(15),
-                  border: BoxBorder.all(
-                    color: Color(getCategoryColor(Category.health)[1]),
-                    width: Category.health == selectedCategory ? 1 : 0,
-                  ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
 
-                  child: Row(
-                    spacing: 7,
-                    children: [
-                      //category indicator
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Color(getCategoryColor(Category.health)[1]),
-                          borderRadius: BorderRadius.circular(50),
+              InkWell(
+                onTap: () => selectCategory(Category.health),
+
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(getCategoryColor(Category.health)[0]),
+                    borderRadius: BorderRadius.circular(12),
+                    border: BoxBorder.all(
+                      color: Color(getCategoryColor(Category.health)[1]),
+                      width: Category.health == selectedCategory ? 1 : 0,
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 7,
+                      children: [
+                        //category indicator
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: Color(getCategoryColor(Category.health)[1]),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Health",
-                        style: GoogleFonts.googleSansFlex(
-                          color: Color(CustomColors.darkNavyText),
-                          fontWeight: FontWeight(500),
+                        Text(
+                          "Health",
+                          style: GoogleFonts.googleSansFlex(
+                            color: const Color(CustomColors.darkNavyText),
+                            fontWeight: const FontWeight(500),
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(getCategoryColor(Category.learning)[0]),
-                  borderRadius: BorderRadius.circular(15),
-                  border: BoxBorder.all(
-                    color: Color(getCategoryColor(Category.learning)[1]),
-                    width: Category.learning == selectedCategory ? 1 : 0,
-                  ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
 
-                  child: Row(
-                    spacing: 7,
-                    children: [
-                      //category indicator
-                      Container(
-                        width: 15,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Color(getCategoryColor(Category.learning)[1]),
-                          borderRadius: BorderRadius.circular(50),
+              InkWell(
+                onTap: () => selectCategory(Category.learning),
+
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(getCategoryColor(Category.learning)[0]),
+                    borderRadius: BorderRadius.circular(12),
+                    border: BoxBorder.all(
+                      color: Color(getCategoryColor(Category.learning)[1]),
+                      width: Category.learning == selectedCategory ? 1 : 0,
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 7,
+                      children: [
+                        //category indicator
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: Color(
+                              getCategoryColor(Category.learning)[1],
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Learning",
-                        style: GoogleFonts.googleSansFlex(
-                          color: Color(CustomColors.darkNavyText),
-                          fontWeight: FontWeight(500),
+                        Text(
+                          "Learning",
+                          style: GoogleFonts.googleSansFlex(
+                            color: const Color(CustomColors.darkNavyText),
+                            fontWeight: const FontWeight(500),
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

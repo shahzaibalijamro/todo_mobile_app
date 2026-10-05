@@ -26,14 +26,14 @@ class CustomTextField extends StatelessWidget {
         minLines: minLines,
         maxLines: maxLines,
         controller: controller,
-        cursorColor: Color(CustomColors.mutedText),
+        cursorColor: const Color(CustomColors.mutedText),
         textAlignVertical: TextAlignVertical.top,
-        cursorHeight: 15,
+        cursorHeight: 14,
         autofocus: autoFocused,
         style: GoogleFonts.googleSansFlex(
-          color: Color(CustomColors.darkNavyText),
-          fontSize: 15,
-          fontWeight: FontWeight(500),
+          color: const Color(CustomColors.darkNavyText),
+          fontSize: 14,
+          fontWeight: const FontWeight(500),
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
@@ -48,17 +48,17 @@ class CustomTextField extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(CustomColors.dragHandleColor),
               width: 0.5,
             ),
           ),
-          fillColor: Color(CustomColors.whiteCards),
+          fillColor: const Color(CustomColors.whiteCards),
           hintText: hint,
           hintStyle: GoogleFonts.googleSansFlex(
-            color: Color(CustomColors.mutedText),
+            color: const Color(CustomColors.mutedText),
             fontSize: 13,
-            fontWeight: FontWeight(500),
+            fontWeight: const FontWeight(500),
           ),
         ),
         validator: (value) {

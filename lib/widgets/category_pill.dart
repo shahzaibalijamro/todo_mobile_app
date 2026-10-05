@@ -32,7 +32,7 @@ Widget categoryPill(Category category) {
   Color backgroundColor = Color(getCategoryColor(category)[0]);
   Color indicatorColor = Color(getCategoryColor(category)[1]);
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
     decoration: BoxDecoration(
       color: backgroundColor,
       borderRadius: BorderRadius.circular(12),
@@ -51,7 +51,7 @@ Widget categoryPill(Category category) {
         Text(
           category.name,
           style: GoogleFonts.googleSansFlex(
-            color: Color(CustomColors.darkNavyText),
+            color: const Color(CustomColors.darkNavyText),
           ),
         ),
       ],

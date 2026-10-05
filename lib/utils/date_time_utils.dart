@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:todo_app/models/task_model.dart';
 
 String formatDateTimeIntoTime(DateTime dateTime) {
   return DateFormat('h:mm a').format(dateTime);
@@ -18,4 +19,8 @@ String formatDateForDatePicker(DateTime dateTime) {
     return "Tomorrow";
   }
   return DateFormat("dd/MM/yyyy").format(dateTime);
+}
+
+List<Task> getCompletedTasks(List<Task> taskList) {
+  return taskList.where((element) => element.isCompleted).toList();
 }

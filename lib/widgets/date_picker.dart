@@ -36,44 +36,44 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
     return InkWell(
       onTap: pickDate,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
-          color: Color(CustomColors.whiteCards),
+          color: const Color(CustomColors.whiteCards),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.calendar_today,
               size: 20,
               color: Color(CustomColors.mutedText),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Date",
                   style: GoogleFonts.googleSansFlex(
-                    fontSize: 8,
-                    fontWeight: FontWeight(500),
-                    color: Color(CustomColors.mutedText),
+                    fontSize: 11,
+                    fontWeight: const FontWeight(500),
+                    color: const Color(CustomColors.mutedText),
                   ),
                 ),
                 Text(
                   formatDateForDatePicker(selectedDate),
                   style: GoogleFonts.googleSansFlex(
-                    fontSize: 12,
-                    fontWeight: FontWeight(500),
-                    color: Color(CustomColors.darkNavyText),
+                    fontSize: 14,
+                    fontWeight: const FontWeight(500),
+                    color: const Color(CustomColors.darkNavyText),
                   ),
                 ),
               ],
             ),
-            Spacer(),
-            Icon(
+            const Spacer(),
+            const Icon(
               Icons.arrow_forward_ios,
-              size: 13,
+              size: 15,
               color: Color(CustomColors.mutedText),
             ),
           ],

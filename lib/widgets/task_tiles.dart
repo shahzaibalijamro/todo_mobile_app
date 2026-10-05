@@ -5,14 +5,18 @@ import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/utils/date_time_utils.dart';
 import 'package:todo_app/widgets/category_pill.dart';
 
-Widget taskTile(void Function() updateState, Task currentTask) {
+Widget taskTile(
+  void Function() updateState,
+  Task currentTask,
+  BuildContext context,
+) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
-      color: Color(CustomColors.whiteCards),
+      color: const Color(CustomColors.whiteCards),
     ),
-    padding: EdgeInsetsGeometry.all(15),
-    margin: EdgeInsets.only(bottom: 10),
+    padding: const EdgeInsetsGeometry.all(15),
+    margin: const EdgeInsets.only(bottom: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +31,7 @@ Widget taskTile(void Function() updateState, Task currentTask) {
             ),
             border: BoxBorder.all(
               width: currentTask.isCompleted ? 0 : 1,
-              color: Color(CustomColors.mutedText),
+              color: const Color(CustomColors.mutedText),
             ),
             borderRadius: BorderRadius.circular(50),
           ),
@@ -37,7 +41,7 @@ Widget taskTile(void Function() updateState, Task currentTask) {
               currentTask.isCompleted = !currentTask.isCompleted;
               updateState();
             },
-            icon: Icon(Icons.check, color: Colors.white),
+            icon: const Icon(Icons.check, color: Colors.white),
           ),
         ),
         Expanded(
@@ -49,7 +53,7 @@ Widget taskTile(void Function() updateState, Task currentTask) {
                 currentTask.name,
                 style: GoogleFonts.googleSansFlex(
                   fontSize: 16,
-                  fontWeight: FontWeight(600),
+                  fontWeight: const FontWeight(600),
                   color: Color(
                     currentTask.isCompleted
                         ? CustomColors.mutedText
@@ -62,19 +66,19 @@ Widget taskTile(void Function() updateState, Task currentTask) {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.schedule,
                     size: 16,
                     color: Color(CustomColors.mutedText),
                   ),
-                  SizedBox(width: 5),
+                  const SizedBox(width: 5),
                   Text(
-                    formatDateTimeIntoTime(currentTask.time),
+                    currentTask.time.format(context),
                     style: GoogleFonts.googleSansFlex(
-                      color: Color(CustomColors.mutedText),
+                      color: const Color(CustomColors.mutedText),
                     ),
                   ),
-                  SizedBox(width: 18),
+                  const SizedBox(width: 18),
                   categoryPill(currentTask.category),
                 ],
               ),
@@ -95,10 +99,8 @@ Widget taskTile(void Function() updateState, Task currentTask) {
         //   ),
         // ),
         InkWell(
-          onTap: () {
-            print("Taspped");
-          },
-          child: Icon(
+          onTap: () {},
+          child: const Icon(
             Icons.more_vert,
             color: Color(CustomColors.mutedText),
             size: 25,

@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
 enum Category { work, health, personal, learning }
 
 class Task {
   String name;
   String? notes;
   DateTime day;
-  DateTime time;
+  TimeOfDay time;
   bool reminder;
   Category category;
   bool isCompleted = false;

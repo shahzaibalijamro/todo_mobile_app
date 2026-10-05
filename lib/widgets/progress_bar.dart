@@ -5,6 +5,6 @@ Widget customProgressBar() {
   return Container(
     // width: double.infinity,
     height: 12,
-    color: Color(CustomColors.primaryPurple),
+    color: const Color(CustomColors.primaryPurple),
   );
 }

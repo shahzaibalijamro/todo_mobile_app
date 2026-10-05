@@ -10,7 +10,7 @@ Widget tasksSection(
 }) {
   return Expanded(
     child: Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
       child: Column(
         children: [
           Row(
@@ -21,7 +21,7 @@ Widget tasksSection(
                 style: GoogleFonts.googleSansFlex(
                   fontWeight: FontWeight.w700,
                   fontSize: 22,
-                  color: Color(CustomColors.darkNavyText),
+                  color: const Color(CustomColors.darkNavyText),
                 ),
               ),
               Row(
@@ -29,18 +29,18 @@ Widget tasksSection(
                   TextButton.icon(
                     style: TextButton.styleFrom(
                       iconAlignment: IconAlignment.end,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                     ),
                     onPressed: () {},
                     label: Text(
                       "See all",
                       style: GoogleFonts.googleSansFlex(
                         fontWeight: FontWeight.w500,
-                        color: Color(CustomColors.primaryPurple),
+                        color: const Color(CustomColors.primaryPurple),
                         fontSize: 15,
                       ),
                     ),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_forward_ios,
                       color: Color(CustomColors.primaryPurple),
                       size: 15,
@@ -50,18 +50,33 @@ Widget tasksSection(
               ),
             ],
           ),
-          Expanded(
-            flex: 3,
-            child: ListView.builder(
-              physics: BouncingScrollPhysics(),
-              padding: EdgeInsets.only(top: 10, bottom: 50),
-              itemBuilder: (context, index) {
-                Task currentTask = taskList[index];
-                return taskTile(updateState, currentTask);
-              },
-              itemCount: taskList.length,
+          if (taskList.length > 0) ...[
+            Expanded(
+              flex: 3,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(top: 10, bottom: 50),
+                itemBuilder: (context, index) {
+                  Task currentTask = taskList[index];
+                  return taskTile(updateState, currentTask, context);
+                },
+                itemCount: taskList.length,
+              ),
             ),
-          ),
+          ] else ...[
+            Expanded(
+              flex: 3,
+              child: Center(
+                child: Text(
+                  "No Tasks currently!",
+                  style: GoogleFonts.googleSansFlex(
+                    color: const Color(CustomColors.mutedText),
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     ),

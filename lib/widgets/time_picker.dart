@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
-import 'package:todo_app/utils/date_time_utils.dart';
 
 class TaskTimePicker extends StatefulWidget {
   final Function(TimeOfDay) onTimeSelected;
@@ -34,44 +33,44 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
     return InkWell(
       onTap: pickTime,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
-          color: Color(CustomColors.whiteCards),
+          color: const Color(CustomColors.whiteCards),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.access_time,
               size: 20,
               color: Color(CustomColors.mutedText),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Time",
                   style: GoogleFonts.googleSansFlex(
-                    fontSize: 8,
-                    fontWeight: FontWeight(500),
-                    color: Color(CustomColors.mutedText),
+                    fontSize: 11,
+                    fontWeight: const FontWeight(500),
+                    color: const Color(CustomColors.mutedText),
                   ),
                 ),
                 Text(
                   selectedTime.format(context),
                   style: GoogleFonts.googleSansFlex(
-                    fontSize: 12,
-                    fontWeight: FontWeight(500),
-                    color: Color(CustomColors.darkNavyText),
+                    fontSize: 14,
+                    fontWeight: const FontWeight(500),
+                    color: const Color(CustomColors.darkNavyText),
                   ),
                 ),
               ],
             ),
-            Spacer(),
-            Icon(
+            const Spacer(),
+            const Icon(
               Icons.arrow_forward_ios,
-              size: 13,
+              size: 15,
               color: Color(CustomColors.mutedText),
             ),
           ],
