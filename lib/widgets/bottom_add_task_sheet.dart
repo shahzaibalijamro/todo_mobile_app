@@ -37,6 +37,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final double bottomPadding = MediaQuery.of(context).viewInsets.bottom + 10;
     void createTask() {
       if (taskController.text == "") {
         return;
@@ -66,7 +67,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
             topRight: Radius.circular(25),
           ),
         ),
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+        padding: EdgeInsets.fromLTRB(20, 10, 20, bottomPadding),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

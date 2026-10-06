@@ -24,3 +24,9 @@ String formatDateForDatePicker(DateTime dateTime) {
 List<Task> getCompletedTasks(List<Task> taskList) {
   return taskList.where((element) => element.isCompleted).toList();
 }
+
+String isMorningOrAfterNoon() {
+  DateTime rightNow = DateTime.now();
+  final period = DateFormat('a').format(rightNow);
+  return period == "AM" ? "Morning" : "Evening";
+}

@@ -12,7 +12,16 @@ class LayoutPageScreen extends StatefulWidget {
 
 class _LayoutPageScreenState extends State<LayoutPageScreen> {
   int currentIndex = 0;
-  List<Widget> screens = [TaskScreen(username: "Alex"), ProfileScreen()];
+
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+
+    screens = [TaskScreen(username: widget.username), const ProfileScreen()];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +32,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
           currentIndex = value;
           setState(() {});
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today_outlined),
+            label: "Settings",
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.circle), label: "Focus"),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: "Settings",

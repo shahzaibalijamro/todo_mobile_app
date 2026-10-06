@@ -15,7 +15,7 @@ Widget customAppBar(String username) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Good morning, $username",
+              "Good ${isMorningOrAfterNoon()}, $username",
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w700,
                 fontSize: 27,
