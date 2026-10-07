@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:todo_app/views/home_page.dart';
 import 'package:todo_app/views/layout_page.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,12 +26,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 "Login Screen",
                 style: GoogleFonts.abhayaLibre(
-                  textStyle: TextStyle(fontSize: 46, color: Colors.black),
+                  textStyle: const TextStyle(fontSize: 46, color: Colors.black),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Container(height: 150, width: 120, color: Colors.green),
-              SizedBox(height: 36),
+              const SizedBox(height: 36),
               TextField(
                 obscureText: isProtected,
                 controller: usernameController,
@@ -41,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(36),
                   ),
-                  hint: Text("John Doe"),
-                  label: Text("Enter your username"),
-                  prefix: Icon(Icons.person),
+                  hint: const Text("John Doe"),
+                  label: const Text("Enter your username"),
+                  prefix: const Icon(Icons.person),
                   suffix: IconButton(
                     onPressed: () {
                       isProtected = !isProtected;
@@ -55,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 34),
+              const SizedBox(height: 34),
               ElevatedButton(
                 onPressed: () {
                   String username = usernameController.text;
@@ -68,16 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-                child: Text("USERNAME"),
+                child: const Text("USERNAME"),
               ),
-              SizedBox(height: 34),
+              const SizedBox(height: 34),
               Expanded(
                 child: ListView.builder(
                   itemCount: names.length,
                   itemBuilder: (context, index) {
                     return Text(
                       names[index],
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     );
                   },
                 ),

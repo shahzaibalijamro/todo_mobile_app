@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
-import 'package:todo_app/utils/date_time_utils.dart';
 import 'package:todo_app/widgets/category_pill.dart';
 
 Widget taskTile(

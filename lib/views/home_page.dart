@@ -50,8 +50,7 @@ class _TaskScreenState extends State<TaskScreen> {
         child: const Icon(Icons.add),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             customAppBar(widget.username),
             ProgressSection(taskList: taskList),

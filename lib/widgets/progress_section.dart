@@ -70,7 +70,9 @@ class ProgressSection extends StatelessWidget {
                       ClipRRect(
                         child: LinearProgressIndicator(
                           borderRadius: BorderRadius.circular(12),
-                          value: completedTasks / totalTasks,
+                          value: totalTasks == 0
+                              ? 0
+                              : completedTasks / totalTasks,
                           minHeight: 14,
                           color: const Color(CustomColors.primaryPurple),
                           backgroundColor: const Color(
