@@ -52,7 +52,7 @@ class _TaskScreenState extends State<TaskScreen> {
       body: SafeArea(
         child: ListView(
           children: [
-            customAppBar(widget.username),
+            customAppBar(username: widget.username),
             ProgressSection(taskList: taskList),
             tasksSection(updateState, taskList: taskList),
           ],

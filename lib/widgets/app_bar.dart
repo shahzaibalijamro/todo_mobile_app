@@ -2,8 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/utils/date_time_utils.dart';
+import 'package:todo_app/views/layout_page.dart';
 
-Widget customAppBar(String username) {
+Widget customAppBar({String? username, Screen? page}) {
+  if (page == Screen.profile) {
+    return Container(
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Profile",
+                style: GoogleFonts.googleSansFlex(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 27,
+                  color: const Color(CustomColors.darkNavyText),
+                ),
+              ),
+              Text(
+                "Make this space yours.",
+                style: GoogleFonts.googleSansFlex(
+                  fontWeight: FontWeight.w500,
+                  color: const Color(CustomColors.mutedText),
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
   return Container(
     width: double.infinity,
     padding: const EdgeInsets.all(20),
