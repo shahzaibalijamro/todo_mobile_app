@@ -61,7 +61,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
       child: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Color(CustomColors.backgroundColor),
+          color: AppColors.backgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
@@ -77,7 +77,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 width: 60,
                 height: 5,
                 decoration: BoxDecoration(
-                  color: const Color(CustomColors.dragHandleColor),
+                  color: AppColors.dragHandleColor,
                   borderRadius: BorderRadius.circular(14),
                 ),
                 margin: const EdgeInsets.only(bottom: 5),
@@ -101,10 +101,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: const Icon(
-                      Icons.close,
-                      color: Color(CustomColors.mutedText),
-                    ),
+                    icon: const Icon(Icons.close, color: AppColors.mutedText),
                   ),
                 ],
               ),
@@ -117,7 +114,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   Text(
                     "Task name",
                     style: GoogleFonts.googleSansFlex(
-                      color: const Color(CustomColors.darkNavyText),
+                      color: AppColors.darkNavyText,
                       fontWeight: const FontWeight(700),
                       fontSize: 14,
                     ),
@@ -133,7 +130,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   Text(
                     "Notes (optional)",
                     style: GoogleFonts.googleSansFlex(
-                      color: const Color(CustomColors.darkNavyText),
+                      color: AppColors.darkNavyText,
                       fontWeight: const FontWeight(700),
                       fontSize: 14,
                     ),
@@ -179,17 +176,14 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
               const SizedBox(height: 12),
               Row(
                 children: [
-                  const Icon(
-                    Icons.notifications,
-                    color: Color(CustomColors.mutedText),
-                  ),
+                  const Icon(Icons.notifications, color: AppColors.mutedText),
                   const SizedBox(width: 10),
                   Text(
                     "Remind me",
                     style: GoogleFonts.googleSansFlex(
                       fontSize: 14,
                       fontWeight: const FontWeight(500),
-                      color: const Color(CustomColors.darkNavyText),
+                      color: AppColors.darkNavyText,
                     ),
                   ),
                   const Spacer(),
@@ -210,7 +204,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   padding: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                   ),
                   width: double.infinity,
                   child: Row(
@@ -220,14 +214,14 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                       const Icon(
                         Icons.add,
                         size: 20,
-                        color: Color(CustomColors.whiteCards),
+                        color: AppColors.whiteCards,
                       ),
                       Text(
                         "Create Task",
                         style: GoogleFonts.googleSansFlex(
                           fontSize: 16,
                           fontWeight: const FontWeight(500),
-                          color: const Color(CustomColors.whiteCards),
+                          color: AppColors.whiteCards,
                         ),
                       ),
                     ],

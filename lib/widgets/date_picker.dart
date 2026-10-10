@@ -38,7 +38,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
-          color: const Color(CustomColors.whiteCards),
+          color: AppColors.whiteCards,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -46,7 +46,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
             const Icon(
               Icons.calendar_today,
               size: 20,
-              color: Color(CustomColors.mutedText),
+              color: AppColors.mutedText,
             ),
             const SizedBox(width: 15),
             Column(
@@ -57,7 +57,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 11,
                     fontWeight: const FontWeight(500),
-                    color: const Color(CustomColors.mutedText),
+                    color: AppColors.mutedText,
                   ),
                 ),
                 Text(
@@ -65,7 +65,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 14,
                     fontWeight: const FontWeight(500),
-                    color: const Color(CustomColors.darkNavyText),
+                    color: AppColors.darkNavyText,
                   ),
                 ),
               ],
@@ -74,7 +74,7 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
             const Icon(
               Icons.arrow_forward_ios,
               size: 15,
-              color: Color(CustomColors.mutedText),
+              color: AppColors.mutedText,
             ),
           ],
         ),

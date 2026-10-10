@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/models/user_model.dart';
 import 'package:todo_app/widgets/bottom_add_task_sheet.dart';
 import 'package:todo_app/widgets/tasks_section.dart';
 import 'package:todo_app/widgets/app_bar.dart';
 import 'package:todo_app/widgets/progress_section.dart';
 
 class TaskScreen extends StatefulWidget {
-  final String username;
-  const new({super.key, required this.username});
+  final User user;
+  const new({super.key, required this.user});
 
   @override
   State<TaskScreen> createState() => _TaskScreenState();
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  List<Task> taskList = [];
+  List<Task> get taskList => widget.user.userTasks;
 
   void updateState() {
     setState(() {});
@@ -33,7 +34,7 @@ class _TaskScreenState extends State<TaskScreen> {
           return AddTaskSheet(
             onCreateTask: (Task newTask) {
               setState(() {
-                taskList.add(newTask);
+                widget.user.userTasks.add(newTask);
               });
             },
           );
@@ -42,7 +43,7 @@ class _TaskScreenState extends State<TaskScreen> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(CustomColors.backgroundColor),
+      backgroundColor: AppColors.backgroundColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           openModalSheet();
@@ -52,7 +53,7 @@ class _TaskScreenState extends State<TaskScreen> {
       body: SafeArea(
         child: ListView(
           children: [
-            customAppBar(username: widget.username),
+            customAppBar(username: widget.user.name),
             ProgressSection(taskList: taskList),
             tasksSection(updateState, taskList: taskList),
           ],

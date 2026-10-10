@@ -35,16 +35,12 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
-          color: const Color(CustomColors.whiteCards),
+          color: AppColors.whiteCards,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           children: [
-            const Icon(
-              Icons.access_time,
-              size: 20,
-              color: Color(CustomColors.mutedText),
-            ),
+            const Icon(Icons.access_time, size: 20, color: AppColors.mutedText),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +50,7 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 11,
                     fontWeight: const FontWeight(500),
-                    color: const Color(CustomColors.mutedText),
+                    color: AppColors.mutedText,
                   ),
                 ),
                 Text(
@@ -62,7 +58,7 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 14,
                     fontWeight: const FontWeight(500),
-                    color: const Color(CustomColors.darkNavyText),
+                    color: AppColors.darkNavyText,
                   ),
                 ),
               ],
@@ -71,7 +67,7 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
             const Icon(
               Icons.arrow_forward_ios,
               size: 15,
-              color: Color(CustomColors.mutedText),
+              color: AppColors.mutedText,
             ),
           ],
         ),

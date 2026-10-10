@@ -19,14 +19,14 @@ Widget customAppBar({String? username, Screen? page}) {
                 style: GoogleFonts.googleSansFlex(
                   fontWeight: FontWeight.w700,
                   fontSize: 27,
-                  color: const Color(CustomColors.darkNavyText),
+                  color: AppColors.darkNavyText,
                 ),
               ),
               Text(
                 "Make this space yours.",
                 style: GoogleFonts.googleSansFlex(
                   fontWeight: FontWeight.w500,
-                  color: const Color(CustomColors.mutedText),
+                  color: AppColors.mutedText,
                   fontSize: 18,
                 ),
               ),
@@ -51,28 +51,24 @@ Widget customAppBar({String? username, Screen? page}) {
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w700,
                 fontSize: 27,
-                color: const Color(CustomColors.darkNavyText),
+                color: AppColors.darkNavyText,
               ),
             ),
             Text(
               getCurrentDay(),
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w500,
-                color: const Color(CustomColors.mutedText),
+                color: AppColors.mutedText,
                 fontSize: 18,
               ),
             ),
           ],
         ),
         const CircleAvatar(
-          backgroundColor: Color(CustomColors.paleLavender),
+          backgroundColor: AppColors.paleLavender,
           // backgroundImage: AssetImage("assets/images/image.png"),
           radius: 32,
-          child: Icon(
-            Icons.person,
-            size: 46,
-            color: Color(CustomColors.primaryPurple),
-          ),
+          child: Icon(Icons.person, size: 46, color: AppColors.primaryPurple),
         ),
       ],
     ),

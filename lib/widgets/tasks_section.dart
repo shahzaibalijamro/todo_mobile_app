@@ -22,7 +22,7 @@ Widget tasksSection(
               style: GoogleFonts.googleSansFlex(
                 fontWeight: FontWeight.w700,
                 fontSize: 22,
-                color: const Color(CustomColors.darkNavyText),
+                color: AppColors.darkNavyText,
               ),
             ),
             Row(
@@ -37,13 +37,13 @@ Widget tasksSection(
                     "See all",
                     style: GoogleFonts.googleSansFlex(
                       fontWeight: FontWeight.w500,
-                      color: const Color(CustomColors.primaryPurple),
+                      color: AppColors.primaryPurple,
                       fontSize: 15,
                     ),
                   ),
                   icon: const Icon(
                     Icons.arrow_forward_ios,
-                    color: Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                     size: 15,
                   ),
                 ),
@@ -51,9 +51,13 @@ Widget tasksSection(
             ),
           ],
         ),
+
         if (taskList.isNotEmpty) ...[
           ListView.builder(
-            physics: const BouncingScrollPhysics(),
+            // This list is inside the page's main ListView. Let it take only
+            // the space its rows need and let the parent handle scrolling.
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.only(top: 10, bottom: 50),
             itemBuilder: (context, index) {
               Task currentTask = taskList[index];
@@ -70,7 +74,7 @@ Widget tasksSection(
             child: Text(
               "No tasks yet",
               style: GoogleFonts.googleSansFlex(
-                color: const Color(CustomColors.mutedText),
+                color: AppColors.mutedText,
                 fontSize: 30,
               ),
             ),

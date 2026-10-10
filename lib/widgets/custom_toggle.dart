@@ -17,9 +17,7 @@ class CustomToggle extends StatelessWidget {
         height: 27,
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
-          color: value
-              ? const Color(CustomColors.primaryPurple)
-              : const Color(CustomColors.mutedText),
+          color: value ? AppColors.primaryPurple : AppColors.mutedText,
           borderRadius: BorderRadius.circular(20),
         ),
         child: AnimatedAlign(

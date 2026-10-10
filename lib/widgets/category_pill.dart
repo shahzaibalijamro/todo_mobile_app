@@ -3,34 +3,28 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 
-List<int> getCategoryColor(Category category) {
+List<Color> getCategoryColor(Category category) {
   switch (category) {
     case Category.health:
-      return [
-        CustomColors.healthBackgroundColor,
-        CustomColors.healthIndicatorColor,
-      ];
+      return [AppColors.healthBackgroundColor, AppColors.healthIndicatorColor];
     case Category.learning:
       return [
-        CustomColors.learningBackgroundColor,
-        CustomColors.learningIndicatorColor,
+        AppColors.learningBackgroundColor,
+        AppColors.learningIndicatorColor,
       ];
     case Category.personal:
       return [
-        CustomColors.personalBackgroundColor,
-        CustomColors.personalIndicatorColor,
+        AppColors.personalBackgroundColor,
+        AppColors.personalIndicatorColor,
       ];
     default:
-      return [
-        CustomColors.workBackgroundColor,
-        CustomColors.workIndicatorColor,
-      ];
+      return [AppColors.workBackgroundColor, AppColors.workIndicatorColor];
   }
 }
 
 Widget categoryPill(Category category) {
-  Color backgroundColor = Color(getCategoryColor(category)[0]);
-  Color indicatorColor = Color(getCategoryColor(category)[1]);
+  Color backgroundColor = getCategoryColor(category)[0];
+  Color indicatorColor = getCategoryColor(category)[1];
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
     decoration: BoxDecoration(
@@ -50,9 +44,7 @@ Widget categoryPill(Category category) {
         ),
         Text(
           category.name,
-          style: GoogleFonts.googleSansFlex(
-            color: const Color(CustomColors.darkNavyText),
-          ),
+          style: GoogleFonts.googleSansFlex(color: AppColors.darkNavyText),
         ),
       ],
     ),

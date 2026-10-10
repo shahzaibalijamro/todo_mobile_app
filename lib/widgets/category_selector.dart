@@ -30,7 +30,7 @@ class CategorySelector extends StatelessWidget {
           Text(
             "Category",
             style: GoogleFonts.googleSansFlex(
-              color: const Color(CustomColors.darkNavyText),
+              color: AppColors.darkNavyText,
               fontWeight: const FontWeight(700),
             ),
           ),
@@ -42,10 +42,10 @@ class CategorySelector extends StatelessWidget {
                 onTap: () => selectCategory(Category.work),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(getCategoryColor(Category.work)[0]),
+                    color: getCategoryColor(Category.work)[0],
                     borderRadius: BorderRadius.circular(12),
                     border: BoxBorder.all(
-                      color: Color(getCategoryColor(Category.work)[1]),
+                      color: getCategoryColor(Category.work)[1],
                       width: Category.work == selectedCategory ? 1 : 0,
                     ),
                   ),
@@ -64,14 +64,14 @@ class CategorySelector extends StatelessWidget {
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                            color: Color(getCategoryColor(Category.work)[1]),
+                            color: getCategoryColor(Category.work)[1],
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
                         Text(
                           "Work",
                           style: GoogleFonts.googleSansFlex(
-                            color: const Color(CustomColors.darkNavyText),
+                            color: AppColors.darkNavyText,
                             fontWeight: const FontWeight(500),
                             fontSize: 12,
                           ),
@@ -86,10 +86,10 @@ class CategorySelector extends StatelessWidget {
                 onTap: () => selectCategory(Category.personal),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(getCategoryColor(Category.personal)[0]),
+                    color: getCategoryColor(Category.personal)[0],
                     borderRadius: BorderRadius.circular(12),
                     border: BoxBorder.all(
-                      color: Color(getCategoryColor(Category.personal)[1]),
+                      color: getCategoryColor(Category.personal)[1],
                       width: Category.personal == selectedCategory ? 1 : 0,
                     ),
                   ),
@@ -108,16 +108,15 @@ class CategorySelector extends StatelessWidget {
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                            color: Color(
-                              getCategoryColor(Category.personal)[1],
-                            ),
+                            color: getCategoryColor(Category.personal)[1],
+
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
                         Text(
                           "Personal",
                           style: GoogleFonts.googleSansFlex(
-                            color: const Color(CustomColors.darkNavyText),
+                            color: AppColors.darkNavyText,
                             fontWeight: const FontWeight(500),
                             fontSize: 12,
                           ),
@@ -133,10 +132,10 @@ class CategorySelector extends StatelessWidget {
 
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(getCategoryColor(Category.health)[0]),
+                    color: getCategoryColor(Category.health)[0],
                     borderRadius: BorderRadius.circular(12),
                     border: BoxBorder.all(
-                      color: Color(getCategoryColor(Category.health)[1]),
+                      color: getCategoryColor(Category.health)[1],
                       width: Category.health == selectedCategory ? 1 : 0,
                     ),
                   ),
@@ -155,14 +154,14 @@ class CategorySelector extends StatelessWidget {
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                            color: Color(getCategoryColor(Category.health)[1]),
+                            color: getCategoryColor(Category.health)[1],
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
                         Text(
                           "Health",
                           style: GoogleFonts.googleSansFlex(
-                            color: const Color(CustomColors.darkNavyText),
+                            color: AppColors.darkNavyText,
                             fontWeight: const FontWeight(500),
                             fontSize: 12,
                           ),
@@ -178,10 +177,10 @@ class CategorySelector extends StatelessWidget {
 
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(getCategoryColor(Category.learning)[0]),
+                    color: getCategoryColor(Category.learning)[0],
                     borderRadius: BorderRadius.circular(12),
                     border: BoxBorder.all(
-                      color: Color(getCategoryColor(Category.learning)[1]),
+                      color: getCategoryColor(Category.learning)[1],
                       width: Category.learning == selectedCategory ? 1 : 0,
                     ),
                   ),
@@ -200,16 +199,14 @@ class CategorySelector extends StatelessWidget {
                           width: 12,
                           height: 12,
                           decoration: BoxDecoration(
-                            color: Color(
-                              getCategoryColor(Category.learning)[1],
-                            ),
+                            color: getCategoryColor(Category.learning)[1],
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
                         Text(
                           "Learning",
                           style: GoogleFonts.googleSansFlex(
-                            color: const Color(CustomColors.darkNavyText),
+                            color: AppColors.darkNavyText,
                             fontWeight: const FontWeight(500),
                             fontSize: 12,
                           ),

@@ -12,7 +12,7 @@ Widget taskTile(
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
-      color: const Color(CustomColors.whiteCards),
+      color: AppColors.whiteCards,
     ),
     padding: const EdgeInsetsGeometry.all(15),
     margin: const EdgeInsets.only(bottom: 10),
@@ -25,12 +25,12 @@ Widget taskTile(
           width: 35,
           height: 35,
           decoration: BoxDecoration(
-            color: Color(
-              currentTask.isCompleted ? CustomColors.primaryPurple : 0xFFFFFFFF,
-            ),
+            color: currentTask.isCompleted
+                ? AppColors.primaryPurple
+                : Colors.transparent,
             border: BoxBorder.all(
               width: currentTask.isCompleted ? 0 : 1,
-              color: const Color(CustomColors.mutedText),
+              color: AppColors.mutedText,
             ),
             borderRadius: BorderRadius.circular(50),
           ),
@@ -53,11 +53,10 @@ Widget taskTile(
                 style: GoogleFonts.googleSansFlex(
                   fontSize: 16,
                   fontWeight: const FontWeight(600),
-                  color: Color(
-                    currentTask.isCompleted
-                        ? CustomColors.mutedText
-                        : CustomColors.darkNavyText,
-                  ),
+                  color: currentTask.isCompleted
+                      ? AppColors.mutedText
+                      : AppColors.darkNavyText,
+
                   decoration: currentTask.isCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
@@ -68,13 +67,13 @@ Widget taskTile(
                   const Icon(
                     Icons.schedule,
                     size: 16,
-                    color: Color(CustomColors.mutedText),
+                    color: AppColors.mutedText,
                   ),
                   const SizedBox(width: 5),
                   Text(
                     currentTask.time.format(context),
                     style: GoogleFonts.googleSansFlex(
-                      color: const Color(CustomColors.mutedText),
+                      color: AppColors.mutedText,
                     ),
                   ),
                   const SizedBox(width: 18),
@@ -92,7 +91,7 @@ Widget taskTile(
         //   ),
         //   child: Icon(
         //     Icons.more_vert,
-        //     color: Color(CustomColors.mutedText),
+        //     color: AppColors.mutedText,
         //     // size: 25,
         //     fontWeight: FontWeight(500),
         //   ),
@@ -101,7 +100,7 @@ Widget taskTile(
           onTap: () {},
           child: const Icon(
             Icons.more_vert,
-            color: Color(CustomColors.mutedText),
+            color: AppColors.mutedText,
             size: 25,
             fontWeight: FontWeight(500),
           ),

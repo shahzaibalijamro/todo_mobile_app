@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/utils/date_time_utils.dart';
+import 'package:todo_app/views/login_page.dart';
 import 'package:todo_app/widgets/app_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/widgets/custom_toggle.dart';
@@ -21,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(CustomColors.backgroundColor),
+        color: AppColors.backgroundColor,
         child: Expanded(
           child: ListView(
             physics: const BouncingScrollPhysics(),
@@ -35,14 +36,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 150,
                     height: 150,
                     decoration: BoxDecoration(
-                      color: const Color(CustomColors.paleLavender),
+                      color: AppColors.paleLavender,
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: const Center(
                       child: Icon(
                         Icons.person,
                         size: 60,
-                        color: Color(CustomColors.primaryPurple),
+                        color: AppColors.primaryPurple,
                       ),
                     ),
                   ),
@@ -52,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight(700),
-                      color: Color(CustomColors.darkNavyText),
+                      color: AppColors.darkNavyText,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -61,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight(500),
-                      color: Color(CustomColors.mutedText),
+                      color: AppColors.mutedText,
                     ),
                   ),
                 ],
@@ -74,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 20,
                     fontWeight: const FontWeight(600),
-                    color: const Color(CustomColors.darkNavyText),
+                    color: AppColors.darkNavyText,
                   ),
                 ),
               ),
@@ -85,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   vertical: 15,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(CustomColors.whiteCards),
+                  color: AppColors.whiteCards,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -96,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.person_outline,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                         const SizedBox(width: 15),
                         Column(
@@ -107,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(600),
-                                color: const Color(CustomColors.darkNavyText),
+                                color: AppColors.darkNavyText,
                               ),
                             ),
                             Text(
@@ -115,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(500),
-                                color: const Color(CustomColors.mutedText),
+                                color: AppColors.mutedText,
                               ),
                             ),
                           ],
@@ -124,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.edit_outlined,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                       ],
                     ),
@@ -133,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.email_outlined,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                         const SizedBox(width: 15),
                         Column(
@@ -144,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(600),
-                                color: const Color(CustomColors.darkNavyText),
+                                color: AppColors.darkNavyText,
                               ),
                             ),
                             Text(
@@ -152,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(500),
-                                color: const Color(CustomColors.mutedText),
+                                color: AppColors.mutedText,
                               ),
                             ),
                           ],
@@ -161,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.edit_outlined,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                       ],
                     ),
@@ -176,7 +177,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: GoogleFonts.googleSansFlex(
                     fontSize: 20,
                     fontWeight: const FontWeight(600),
-                    color: const Color(CustomColors.darkNavyText),
+                    color: AppColors.darkNavyText,
                   ),
                 ),
               ),
@@ -187,7 +188,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   vertical: 15,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(CustomColors.whiteCards),
+                  color: AppColors.whiteCards,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -198,7 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.notifications_outlined,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                         const SizedBox(width: 15),
                         Column(
@@ -209,7 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(600),
-                                color: const Color(CustomColors.darkNavyText),
+                                color: AppColors.darkNavyText,
                               ),
                             ),
                           ],
@@ -230,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.schedule_outlined,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                         const SizedBox(width: 15),
                         Column(
@@ -241,7 +242,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 16,
                                 fontWeight: const FontWeight(600),
-                                color: const Color(CustomColors.darkNavyText),
+                                color: AppColors.darkNavyText,
                               ),
                             ),
                             Text(
@@ -249,7 +250,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: GoogleFonts.googleSansFlex(
                                 fontSize: 15,
                                 fontWeight: const FontWeight(500),
-                                color: const Color(CustomColors.mutedText),
+                                color: AppColors.mutedText,
                               ),
                             ),
                           ],
@@ -258,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Icon(
                           Icons.arrow_forward_ios,
                           size: 25,
-                          color: Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                         ),
                       ],
                     ),
@@ -280,7 +281,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const LoginScreen();
+                        },
+                      ),
+                    );
+                  },
                   label: Text(
                     "Log out",
                     style: GoogleFonts.googleSansFlex(color: Colors.red),

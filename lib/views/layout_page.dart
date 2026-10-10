@@ -5,13 +5,14 @@ import 'package:todo_app/views/calendar_page.dart';
 import 'package:todo_app/views/focus_page.dart';
 import 'package:todo_app/views/home_page.dart';
 import 'package:todo_app/views/profile_page.dart';
+import 'package:todo_app/models/user_model.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 enum Screen { home, calendar, focus, profile }
 
 class LayoutPageScreen extends StatefulWidget {
-  final String username;
-  const new({super.key, required this.username});
+  final User user;
+  const new({super.key, required this.user});
 
   @override
   State<LayoutPageScreen> createState() => _LayoutPageScreenState();
@@ -26,7 +27,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
   void initState() {
     super.initState();
     screens = [
-      TaskScreen(username: widget.username),
+      TaskScreen(user: widget.user),
       const CalendarScreen(),
       const FocusScreen(),
       const ProfileScreen(),
@@ -36,19 +37,19 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(CustomColors.backgroundColor),
+      backgroundColor: AppColors.backgroundColor,
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         enableFeedback: true,
         selectedLabelStyle: GoogleFonts.googleSansFlex(fontSize: 14),
         unselectedLabelStyle: GoogleFonts.googleSansFlex(fontSize: 14),
         showSelectedLabels: false,
-        selectedItemColor: const Color(CustomColors.primaryPurple),
-        unselectedItemColor: const Color(CustomColors.mutedText),
+        selectedItemColor: AppColors.primaryPurple,
+        unselectedItemColor: AppColors.mutedText,
         showUnselectedLabels: false,
         iconSize: 30,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(CustomColors.whiteCards),
+        backgroundColor: AppColors.whiteCards,
         currentIndex: currentIndex,
         onTap: (value) {
           currentIndex = value;
@@ -82,7 +83,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
                   width: 25,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: const Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -115,7 +116,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
                   width: 25,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: const Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -148,7 +149,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
                   width: 25,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: const Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
@@ -181,7 +182,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
                   width: 25,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: const Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),

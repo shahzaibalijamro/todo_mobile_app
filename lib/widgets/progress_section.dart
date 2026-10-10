@@ -23,14 +23,14 @@ class ProgressSection extends StatelessWidget {
             style: GoogleFonts.googleSansFlex(
               fontWeight: FontWeight.w700,
               fontSize: 30,
-              color: const Color(CustomColors.darkNavyText),
+              color: AppColors.darkNavyText,
             ),
           ),
           Text(
             "$totalTasks tasks · $completedTasks completed",
             style: GoogleFonts.googleSansFlex(
               fontWeight: FontWeight.w500,
-              color: const Color(CustomColors.mutedText),
+              color: AppColors.mutedText,
               fontSize: 18,
             ),
           ),
@@ -38,7 +38,7 @@ class ProgressSection extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 15),
             padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
-              color: Color(CustomColors.paleLavender),
+              color: AppColors.paleLavender,
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             child: Row(
@@ -55,14 +55,14 @@ class ProgressSection extends StatelessWidget {
                         style: GoogleFonts.googleSansFlex(
                           fontWeight: FontWeight.w700,
                           fontSize: 20,
-                          color: const Color(CustomColors.darkNavyText),
+                          color: AppColors.darkNavyText,
                         ),
                       ),
                       Text(
                         "$completedTasks of $totalTasks tasks done",
                         style: GoogleFonts.googleSansFlex(
                           fontWeight: FontWeight.w500,
-                          color: const Color(CustomColors.mutedText),
+                          color: AppColors.mutedText,
                           fontSize: 18,
                         ),
                       ),
@@ -74,10 +74,8 @@ class ProgressSection extends StatelessWidget {
                               ? 0
                               : completedTasks / totalTasks,
                           minHeight: 14,
-                          color: const Color(CustomColors.primaryPurple),
-                          backgroundColor: const Color(
-                            CustomColors.secondaryBackgroundColor,
-                          ),
+                          color: AppColors.primaryPurple,
+                          backgroundColor: AppColors.secondaryBackgroundColor,
                         ),
                       ),
                       // progress
@@ -85,13 +83,13 @@ class ProgressSection extends StatelessWidget {
                   ),
                 ),
                 const CircleAvatar(
-                  backgroundColor: Color(CustomColors.secondaryBackgroundColor),
+                  backgroundColor: AppColors.secondaryBackgroundColor,
                   // backgroundImage: AssetImage("assets/images/image.png"),
                   radius: 32,
                   child: Icon(
                     Icons.check,
                     size: 46,
-                    color: Color(CustomColors.primaryPurple),
+                    color: AppColors.primaryPurple,
                   ),
                 ),
               ],
