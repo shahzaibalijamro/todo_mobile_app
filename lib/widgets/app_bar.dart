@@ -43,26 +43,29 @@ Widget customAppBar({String? username, Screen? page}) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Good ${isMorningOrAfterNoon()}, $username",
-              style: GoogleFonts.googleSansFlex(
-                fontWeight: FontWeight.w700,
-                fontSize: 27,
-                color: AppColors.darkNavyText,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Good ${isMorningOrAfterNoon()}, $username",
+                maxLines: 2,
+                style: GoogleFonts.googleSansFlex(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 25,
+                  color: AppColors.darkNavyText,
+                ),
               ),
-            ),
-            Text(
-              getCurrentDay(),
-              style: GoogleFonts.googleSansFlex(
-                fontWeight: FontWeight.w500,
-                color: AppColors.mutedText,
-                fontSize: 18,
+              Text(
+                getCurrentDay(),
+                style: GoogleFonts.googleSansFlex(
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.mutedText,
+                  fontSize: 18,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const CircleAvatar(
           backgroundColor: AppColors.paleLavender,
