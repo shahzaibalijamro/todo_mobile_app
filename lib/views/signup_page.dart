@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/constants/colors.dart';
-import 'package:todo_app/data/users.dart';
 import 'package:todo_app/models/user_model.dart';
-import 'package:todo_app/views/layout_page.dart';
+import 'package:todo_app/utils/user_utils.dart';
 import 'package:todo_app/views/login_page.dart';
 
 import 'dart:math' as math;
@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController(text: "12345");
   final passwordFocusNode = FocusNode();
   bool obscurePassword = true;
-  String? loginError;
+  String? signUpError;
   bool rememberMe = false;
 
   @override
@@ -35,27 +35,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  void login() {
-    final email = emailController.text.trim().toLowerCase();
+  void saveNewUserInMemory(User user) async {
+    List<User> users = await getSavedUsersInMemory();
+    users.add(user);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> usersToSave = users.map((e) => e.toJSON()).toList();
+    prefs.setStringList("users", usersToSave);
+  }
+
+  void signUp() async {
+    final email = emailController.text.trim();
     final password = passwordController.text;
+    final fullName = fullNameController.text;
+    if (fullName.trim() == "" || password.trim() == "" || email.trim() == "") {
+      setState(() => signUpError = 'Cannot have empty fields!');
+      return;
+    }
+    final users = await getSavedUsersInMemory();
+    if (!mounted) return;
     User? user;
     for (final candidate in users) {
-      if (candidate.email.toLowerCase() == email &&
-          candidate.password == password) {
+      if (candidate.email == email && candidate.password == password) {
         user = candidate;
         break;
       }
     }
-
-    if (user == null) {
-      setState(() => loginError = 'Email or password is incorrect');
+    if (user != null) {
+      setState(() => signUpError = 'User already exists!');
       return;
-    }
+    } else {
+      final newUser = User(name: fullName, email: email, password: password);
+      saveNewUserInMemory(newUser);
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => LayoutPageScreen(user: user!)),
-    );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      );
+    }
   }
 
   void goToLogin() {
@@ -219,12 +235,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           const SizedBox(height: 7),
-          if (loginError != null) ...[
-            Text(loginError!, style: const TextStyle(color: Colors.red)),
+          if (signUpError != null) ...[
+            Text(signUpError!, style: const TextStyle(color: Colors.red)),
           ],
           const SizedBox(height: 10),
           InkWell(
-            onTap: login,
+            onTap: signUp,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),

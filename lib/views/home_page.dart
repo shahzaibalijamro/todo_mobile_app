@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/models/user_model.dart';
@@ -22,6 +23,38 @@ class _TaskScreenState extends State<TaskScreen> {
     setState(() {});
   }
 
+  void updateTasksInMemory() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+      "${widget.user.email}Todos",
+      widget.user.userTasks.map((e) {
+        return e.toJSON();
+      }).toList(),
+    );
+  }
+
+  void getTasksSavedInMemory() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> tasksInMemory =
+        prefs.getStringList("${widget.user.email}Todos") ?? [];
+    List<Task> tasks = tasksInMemory.map((e) => Task.fromJSON(e)).toList();
+    widget.user.userTasks.addAll(tasks);
+    setState(() {});
+  }
+
+  void addNewTask(Task newTask) {
+    setState(() {
+      widget.user.userTasks.add(newTask);
+    });
+    updateTasksInMemory();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getTasksSavedInMemory();
+  }
+
   @override
   Widget build(BuildContext context) {
     void openModalSheet() {
@@ -31,13 +64,7 @@ class _TaskScreenState extends State<TaskScreen> {
         isScrollControlled: true,
         isDismissible: false,
         builder: (context) {
-          return AddTaskSheet(
-            onCreateTask: (Task newTask) {
-              setState(() {
-                widget.user.userTasks.add(newTask);
-              });
-            },
-          );
+          return AddTaskSheet(onCreateTask: addNewTask);
         },
       );
     }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
+import 'package:todo_app/utils/user_utils.dart';
 import 'package:todo_app/views/calendar_page.dart';
 import 'package:todo_app/views/focus_page.dart';
 import 'package:todo_app/views/home_page.dart';
+import 'package:todo_app/views/login_page.dart';
 import 'package:todo_app/views/profile_page.dart';
 import 'package:todo_app/models/user_model.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -11,8 +13,8 @@ import 'package:material_symbols_icons/symbols.dart';
 enum Screen { home, calendar, focus, profile }
 
 class LayoutPageScreen extends StatefulWidget {
-  final User user;
-  const new({super.key, required this.user});
+  final String userEmail;
+  const new({super.key, required this.userEmail});
 
   @override
   State<LayoutPageScreen> createState() => _LayoutPageScreenState();
@@ -20,22 +22,46 @@ class LayoutPageScreen extends StatefulWidget {
 
 class _LayoutPageScreenState extends State<LayoutPageScreen> {
   int currentIndex = 0;
+  User? user;
+  bool isLoading = true;
 
   late final List<Widget> screens;
+
+  // User? getUser (String email) async => await findUser(email: email);
 
   @override
   void initState() {
     super.initState();
+    loadUser();
+  }
+
+  void loadUser() async {
+    final userInMemory = await findUser(email: widget.userEmail);
+    if (!mounted) return;
+    if (userInMemory == null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+      return;
+    }
     screens = [
-      TaskScreen(user: widget.user),
+      TaskScreen(user: userInMemory),
       const CalendarScreen(),
       const FocusScreen(),
       const ProfileScreen(),
     ];
+    setState(() {
+      isLoading = false;
+      user = userInMemory;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: screens[currentIndex],

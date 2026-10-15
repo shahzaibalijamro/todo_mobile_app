@@ -4,7 +4,7 @@ import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/widgets/category_pill.dart';
 
-class CategorySelector extends StatelessWidget {
+class CategorySelector extends StatefulWidget {
   final Category selectedCategory;
   final Function(Category selectedCategory) onTap;
 
@@ -14,8 +14,14 @@ class CategorySelector extends StatelessWidget {
     required this.onTap,
   });
 
+  @override
+  State<CategorySelector> createState() => _CategorySelectorState();
+}
+
+class _CategorySelectorState extends State<CategorySelector> {
   void selectCategory(Category category) {
-    onTap(category);
+    widget.onTap(category);
+    setState(() {});
   }
 
   @override
@@ -44,10 +50,12 @@ class CategorySelector extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: getCategoryColor(Category.work)[0],
                     borderRadius: BorderRadius.circular(12),
-                    border: BoxBorder.all(
-                      color: getCategoryColor(Category.work)[1],
-                      width: Category.work == selectedCategory ? 1 : 0,
-                    ),
+                    border: Category.work == widget.selectedCategory
+                        ? BoxBorder.all(
+                            color: getCategoryColor(Category.work)[1],
+                            width: 1,
+                          )
+                        : null,
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -88,10 +96,12 @@ class CategorySelector extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: getCategoryColor(Category.personal)[0],
                     borderRadius: BorderRadius.circular(12),
-                    border: BoxBorder.all(
-                      color: getCategoryColor(Category.personal)[1],
-                      width: Category.personal == selectedCategory ? 1 : 0,
-                    ),
+                    border: Category.personal == widget.selectedCategory
+                        ? BoxBorder.all(
+                            color: getCategoryColor(Category.personal)[1],
+                            width: 1,
+                          )
+                        : null,
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -134,10 +144,12 @@ class CategorySelector extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: getCategoryColor(Category.health)[0],
                     borderRadius: BorderRadius.circular(12),
-                    border: BoxBorder.all(
-                      color: getCategoryColor(Category.health)[1],
-                      width: Category.health == selectedCategory ? 1 : 0,
-                    ),
+                    border: Category.health == widget.selectedCategory
+                        ? BoxBorder.all(
+                            color: getCategoryColor(Category.health)[1],
+                            width: 1,
+                          )
+                        : null,
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -179,10 +191,12 @@ class CategorySelector extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: getCategoryColor(Category.learning)[0],
                     borderRadius: BorderRadius.circular(12),
-                    border: BoxBorder.all(
-                      color: getCategoryColor(Category.learning)[1],
-                      width: Category.learning == selectedCategory ? 1 : 0,
-                    ),
+                    border: Category.learning == widget.selectedCategory
+                        ? BoxBorder.all(
+                            color: getCategoryColor(Category.learning)[1],
+                            width: 1,
+                          )
+                        : null,
                   ),
                   child: Container(
                     padding: const EdgeInsets.symmetric(

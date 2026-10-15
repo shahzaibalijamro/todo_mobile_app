@@ -46,8 +46,13 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
       widget.onCreateTask(
         Task(
           name: taskController.text,
-          day: selectedDate,
-          time: selectedTime,
+          day: DateTime(
+            selectedDate.year,
+            selectedDate.month,
+            selectedDate.day,
+            selectedTime.hour,
+            selectedTime.minute,
+          ),
           reminder: remindMe,
           category: selectedCategory,
         ),

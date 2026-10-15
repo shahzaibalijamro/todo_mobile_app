@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/constants/colors.dart';
-import 'package:todo_app/data/users.dart';
 import 'package:todo_app/models/user_model.dart';
+import 'package:todo_app/utils/user_utils.dart';
 import 'package:todo_app/views/layout_page.dart';
 
 import './signup_page.dart';
@@ -45,10 +46,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void login() {
+  void rememberUser(User user) async {
+    final userInString = user.toJSON();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user', userInString);
+  }
+
+  void login() async {
     final email = emailController.text.trim().toLowerCase();
     final password = passwordController.text;
     User? user;
+    final users = await getSavedUsersInMemory();
+    if (!mounted) return;
     for (final candidate in users) {
       if (candidate.email.toLowerCase() == email &&
           candidate.password == password) {
@@ -62,9 +71,15 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
+    if (rememberMe) {
+      rememberUser(user);
+    }
+
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => LayoutPageScreen(user: user!)),
+      MaterialPageRoute(
+        builder: (_) => LayoutPageScreen(userEmail: user!.email),
+      ),
     );
   }
 
