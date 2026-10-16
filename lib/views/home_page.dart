@@ -17,7 +17,8 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  List<Task> get taskList => widget.user.userTasks;
+  List<Task> taskList = [];
+  bool isLoading = true;
 
   void updateState() {
     setState(() {});
@@ -27,7 +28,7 @@ class _TaskScreenState extends State<TaskScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
       "${widget.user.email}Todos",
-      widget.user.userTasks.map((e) {
+      taskList.map((e) {
         return e.toJSON();
       }).toList(),
     );
@@ -38,13 +39,15 @@ class _TaskScreenState extends State<TaskScreen> {
     List<String> tasksInMemory =
         prefs.getStringList("${widget.user.email}Todos") ?? [];
     List<Task> tasks = tasksInMemory.map((e) => Task.fromJSON(e)).toList();
-    widget.user.userTasks.addAll(tasks);
-    setState(() {});
+    setState(() {
+      taskList = tasks;
+      isLoading = false;
+    });
   }
 
   void addNewTask(Task newTask) {
     setState(() {
-      widget.user.userTasks.add(newTask);
+      taskList.add(newTask);
     });
     updateTasksInMemory();
   }
@@ -66,6 +69,13 @@ class _TaskScreenState extends State<TaskScreen> {
         builder: (context) {
           return AddTaskSheet(onCreateTask: addNewTask);
         },
+      );
+    }
+
+    if (isLoading) {
+      return const Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 

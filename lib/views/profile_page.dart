@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/constants/colors.dart';
+import 'package:todo_app/models/user_model.dart';
 import 'package:todo_app/utils/date_time_utils.dart';
 import 'package:todo_app/views/login_page.dart';
 import 'package:todo_app/widgets/app_bar.dart';
@@ -10,7 +11,8 @@ import 'package:todo_app/widgets/custom_toggle.dart';
 import '../views/layout_page.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const new({super.key});
+  final User user;
+  const new({super.key, required this.user});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -46,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                // padding: const EdgeInsets.symmetric(horizontal: 20),
                 width: 150,
                 height: 150,
                 decoration: BoxDecoration(
@@ -56,26 +58,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: const Center(
                   child: Icon(
                     Icons.person,
-                    size: 60,
+                    size: 120,
                     color: AppColors.primaryPurple,
                   ),
                 ),
               ),
               const SizedBox(height: 15),
-              const Text(
-                "Alex Morgan",
-                style: TextStyle(
+              Text(
+                widget.user.name,
+                style: GoogleFonts.googleSansFlex(
                   fontSize: 30,
-                  fontWeight: FontWeight(700),
+                  fontWeight: const FontWeight(800),
                   color: AppColors.darkNavyText,
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
-                "Grade 8 · Section B",
-                style: TextStyle(
+              Text(
+                widget.user.email,
+                style: GoogleFonts.googleSansFlex(
                   fontSize: 22,
-                  fontWeight: FontWeight(500),
+                  fontWeight: const FontWeight(500),
                   color: AppColors.mutedText,
                 ),
               ),

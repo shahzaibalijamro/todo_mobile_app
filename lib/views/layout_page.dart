@@ -49,7 +49,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
       TaskScreen(user: userInMemory),
       const CalendarScreen(),
       const FocusScreen(),
-      const ProfileScreen(),
+      ProfileScreen(user: userInMemory),
     ];
     setState(() {
       isLoading = false;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:todo_app/views/layout_page.dart';
 import 'package:todo_app/views/splash_screen.dart';
 
 void main() {
@@ -12,7 +11,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      // home: LayoutPageScreen(username: "User"),
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );

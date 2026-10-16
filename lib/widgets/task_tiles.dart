@@ -41,7 +41,12 @@ Widget taskTile(
               currentTask.isCompleted = !currentTask.isCompleted;
               updateState();
             },
-            icon: const Icon(Icons.check, color: Colors.white),
+            icon: Icon(
+              Icons.check,
+              color: currentTask.isCompleted
+                  ? Colors.white
+                  : Colors.transparent,
+            ),
           ),
         ),
         Expanded(
