@@ -46,6 +46,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
       widget.onCreateTask(
         Task(
           name: taskController.text,
+          notes: notesController.text,
           day: DateTime(
             selectedDate.year,
             selectedDate.month,

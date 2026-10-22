@@ -23,8 +23,8 @@ List<Color> getCategoryColor(Category category) {
 }
 
 Widget categoryPill(Category category) {
-  Color backgroundColor = getCategoryColor(category)[0];
-  Color indicatorColor = getCategoryColor(category)[1];
+  final Color backgroundColor = getCategoryColor(category)[0];
+  final Color indicatorColor = getCategoryColor(category)[1];
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
     decoration: BoxDecoration(

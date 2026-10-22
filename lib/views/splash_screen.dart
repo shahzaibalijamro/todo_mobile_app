@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
     final String? userInMemory = prefs.getString('user');
 
     if (userInMemory != null) {
-      User user = User.fromJSON(userInMemory);
+      final User user = User.fromJSON(userInMemory);
       return user.email;
     }
 
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to LoginScreen after 2 seconds
     _navigationTimer = Timer(const Duration(seconds: 5), () async {
-      String? userEmail = await checkUser();
+      final String? userEmail = await checkUser();
       if (!mounted) return;
       Navigator.pushReplacement(
         context,

@@ -4,6 +4,7 @@ import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/models/user_model.dart';
 import 'package:todo_app/widgets/bottom_add_task_sheet.dart';
+import 'package:todo_app/widgets/bottom_edit_task_sheet.dart';
 import 'package:todo_app/widgets/tasks_section.dart';
 import 'package:todo_app/widgets/app_bar.dart';
 import 'package:todo_app/widgets/progress_section.dart';
@@ -25,7 +26,7 @@ class _TaskScreenState extends State<TaskScreen> {
   }
 
   void updateTasksInMemory() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
       "${widget.user.email}Todos",
       taskList.map((e) {
@@ -35,10 +36,12 @@ class _TaskScreenState extends State<TaskScreen> {
   }
 
   void getTasksSavedInMemory() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> tasksInMemory =
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final List<String> tasksInMemory =
         prefs.getStringList("${widget.user.email}Todos") ?? [];
-    List<Task> tasks = tasksInMemory.map((e) => Task.fromJSON(e)).toList();
+    final List<Task> tasks = tasksInMemory
+        .map((e) => Task.fromJSON(e))
+        .toList();
     setState(() {
       taskList = tasks;
       isLoading = false;
@@ -52,6 +55,13 @@ class _TaskScreenState extends State<TaskScreen> {
     updateTasksInMemory();
   }
 
+  void editTask(Task newTask, int index) {
+    setState(() {
+      taskList[index] = newTask;
+    });
+    updateTasksInMemory();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -60,14 +70,20 @@ class _TaskScreenState extends State<TaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    void openModalSheet() {
+    void openModalSheet({bool forEdit = false, Task? currentTask, int? index}) {
       showModalBottomSheet(
         context: context,
         useSafeArea: true,
         isScrollControlled: true,
         isDismissible: false,
         builder: (context) {
-          return AddTaskSheet(onCreateTask: addNewTask);
+          return forEdit
+              ? EditTaskSheet(
+                  onEditTask: editTask,
+                  currentTask: currentTask!,
+                  index: index!,
+                )
+              : AddTaskSheet(onCreateTask: addNewTask);
         },
       );
     }
@@ -92,7 +108,11 @@ class _TaskScreenState extends State<TaskScreen> {
           children: [
             customAppBar(username: widget.user.name),
             ProgressSection(taskList: taskList),
-            tasksSection(updateState, taskList: taskList),
+            TasksSection(
+              openModalSheet: openModalSheet,
+              updateState: updateState,
+              taskList: taskList,
+            ),
           ],
         ),
       ),

@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: ListView(
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 prefixIcon: Icons.email_outlined,
                 controller: emailController,
                 hint: "Enter your email",
-                autoFocused: true,
+                autoFocused: false,
                 minLines: 1,
                 maxLines: 1,
               ),

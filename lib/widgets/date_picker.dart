@@ -5,7 +5,8 @@ import 'package:todo_app/utils/date_time_utils.dart';
 
 class TaskDatePicker extends StatefulWidget {
   final Function(DateTime) onDateSelected;
-  const new({super.key, required this.onDateSelected});
+  final DateTime? selectedDate;
+  const new({super.key, required this.onDateSelected, this.selectedDate});
 
   @override
   State<TaskDatePicker> createState() => _TaskDatePickerState();
@@ -28,6 +29,16 @@ class _TaskDatePickerState extends State<TaskDatePicker> {
       });
 
       widget.onDateSelected(date);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedDate != null) {
+      setState(() {
+        selectedDate = widget.selectedDate!;
+      });
     }
   }
 

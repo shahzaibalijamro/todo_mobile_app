@@ -36,10 +36,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void saveNewUserInMemory(User user) async {
-    List<User> users = await getSavedUsersInMemory();
+    final List<User> users = await getSavedUsersInMemory();
     users.add(user);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> usersToSave = users.map((e) => e.toJSON()).toList();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final List<String> usersToSave = users.map((e) => e.toJSON()).toList();
     prefs.setStringList("users", usersToSave);
   }
 
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: ListView(

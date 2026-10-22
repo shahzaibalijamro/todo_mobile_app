@@ -9,6 +9,8 @@ Widget taskTile(
   void Function() updateState,
   Task currentTask,
   BuildContext context,
+  void Function({bool forEdit, Task? currentTask, int? index}) openModalSheet,
+  int currentIndex,
 ) {
   return Container(
     decoration: BoxDecoration(
@@ -103,7 +105,11 @@ Widget taskTile(
         //   ),
         // ),
         InkWell(
-          onTap: () {},
+          onTap: () => openModalSheet(
+            forEdit: true,
+            currentTask: currentTask,
+            index: currentIndex,
+          ),
           child: const Icon(
             Icons.more_vert,
             color: AppColors.mutedText,

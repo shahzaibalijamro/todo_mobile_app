@@ -12,7 +12,7 @@ class User {
   }
 
   static User fromJSON(String userInString) {
-    Map<String, dynamic> userInMap = jsonDecode(userInString);
+    final Map<String, dynamic> userInMap = jsonDecode(userInString);
     return User(
       name: userInMap["name"],
       email: userInMap["email"],

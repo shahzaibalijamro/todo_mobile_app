@@ -6,12 +6,12 @@ String formatDateTimeIntoTime(DateTime dateTime) {
 }
 
 String getCurrentDay() {
-  DateTime rightNow = DateTime.now();
+  final DateTime rightNow = DateTime.now();
   return DateFormat('EEEE, MMMM d').format(rightNow);
 }
 
 String formatDateForDatePicker(DateTime dateTime) {
-  DateTime rightNow = DateTime.now();
+  final DateTime rightNow = DateTime.now();
   if (dateTime.day == rightNow.day) {
     return "Today";
   }
@@ -26,7 +26,7 @@ List<Task> getCompletedTasks(List<Task> taskList) {
 }
 
 String isMorningOrAfterNoon() {
-  DateTime rightNow = DateTime.now();
+  final DateTime rightNow = DateTime.now();
   final period = DateFormat('a').format(rightNow);
   return period == "AM" ? "Morning" : "Evening";
 }

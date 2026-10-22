@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
 
+enum InputAction { next, done }
+
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hint;
@@ -11,6 +13,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final IconData? prefixIcon;
   final FocusNode? focusNode;
+  final InputAction inputAction;
 
   const CustomTextField({
     super.key,
@@ -22,6 +25,7 @@ class CustomTextField extends StatefulWidget {
     this.isPassword = false,
     this.prefixIcon,
     this.focusNode,
+    this.inputAction = InputAction.done,
   });
 
   @override
@@ -30,11 +34,16 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   late bool isObscured;
+  FocusNode effectiveFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     isObscured = widget.isPassword;
+    if (widget.focusNode != null) {
+      effectiveFocusNode.dispose();
+      effectiveFocusNode = widget.focusNode!;
+    }
   }
 
   Widget? getPasswordIcon() {
@@ -79,7 +88,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
       child: TextField(
-        focusNode: widget.focusNode,
+        onTapOutside: (event) {
+          effectiveFocusNode.unfocus();
+        },
+        textInputAction: widget.inputAction == InputAction.next
+            ? TextInputAction.next
+            : TextInputAction.done,
+        focusNode: effectiveFocusNode,
         obscureText: isObscured,
         minLines: widget.minLines,
         maxLines: widget.maxLines,

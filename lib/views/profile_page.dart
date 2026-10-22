@@ -23,7 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool remindMe = true;
 
   void logOut() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('user');
     if (!mounted) return;
     Navigator.pushReplacement(

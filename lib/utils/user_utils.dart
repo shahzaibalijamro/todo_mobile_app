@@ -12,7 +12,7 @@ Future<User?> findUser({required String email}) async {
 }
 
 Future<List<User>> getSavedUsersInMemory() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  List<String> usersInMemory = prefs.getStringList("users") ?? [];
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final List<String> usersInMemory = prefs.getStringList("users") ?? [];
   return usersInMemory.map((i) => User.fromJSON(i)).toList();
 }

@@ -4,7 +4,8 @@ import 'package:todo_app/constants/colors.dart';
 
 class TaskTimePicker extends StatefulWidget {
   final Function(TimeOfDay) onTimeSelected;
-  const new({super.key, required this.onTimeSelected});
+  final TimeOfDay? selectedTime;
+  const new({super.key, required this.onTimeSelected, this.selectedTime});
 
   @override
   State<TaskTimePicker> createState() => _TaskTimePickerState();
@@ -25,6 +26,16 @@ class _TaskTimePickerState extends State<TaskTimePicker> {
       });
 
       widget.onTimeSelected(time);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.selectedTime != null) {
+      setState(() {
+        selectedTime = widget.selectedTime!;
+      });
     }
   }
 

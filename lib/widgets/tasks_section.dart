@@ -6,82 +6,138 @@ import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/widgets/task_tiles.dart';
 
-Widget tasksSection(
-  void Function() updateState, {
-  required List<Task> taskList,
-}) {
-  return Padding(
-    padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
-    child: Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "My Tasks",
-              style: GoogleFonts.googleSansFlex(
-                fontWeight: FontWeight.w700,
-                fontSize: 22,
-                color: AppColors.darkNavyText,
+class TasksSection extends StatefulWidget {
+  final Function({bool forEdit, Task? currentTask, int? index}) openModalSheet;
+  final Function() updateState;
+  final List<Task> taskList;
+  const new({
+    super.key,
+    required this.openModalSheet,
+    required this.updateState,
+    required this.taskList,
+  });
+
+  @override
+  State<TasksSection> createState() => _TasksSectionState();
+}
+
+class _TasksSectionState extends State<TasksSection> {
+  final searchController = TextEditingController();
+  List<Task> searchList = [];
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "My Tasks",
+                style: GoogleFonts.googleSansFlex(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22,
+                  color: AppColors.darkNavyText,
+                ),
               ),
-            ),
-            Row(
-              children: [
-                TextButton.icon(
-                  style: TextButton.styleFrom(
-                    iconAlignment: IconAlignment.end,
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                  ),
-                  onPressed: () {},
-                  label: Text(
-                    "See all",
-                    style: GoogleFonts.googleSansFlex(
-                      fontWeight: FontWeight.w500,
+              Row(
+                children: [
+                  TextButton.icon(
+                    style: TextButton.styleFrom(
+                      iconAlignment: IconAlignment.end,
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      "See all",
+                      style: GoogleFonts.googleSansFlex(
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryPurple,
+                        fontSize: 15,
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
                       color: AppColors.primaryPurple,
-                      fontSize: 15,
+                      size: 15,
                     ),
                   ),
-                  icon: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryPurple,
-                    size: 15,
-                  ),
-                ),
-              ],
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          // CustomTextField(
+          //   controller: searchController,
+          //   hint: "Search for tasks",
+          // ),
+          TextField(
+            autofocus: true,
+            controller: searchController,
+            style: GoogleFonts.googleSansFlex(),
+            decoration: InputDecoration(
+              prefix: const Icon(Icons.search, color: AppColors.mutedText),
+              hint: Text(
+                "Search for tasks",
+                style: GoogleFonts.googleSansFlex(),
+              ),
+              hintStyle: GoogleFonts.googleSansFlex(),
             ),
-          ],
-        ),
-
-        if (taskList.isNotEmpty) ...[
-          ListView.builder(
-            // This list is inside the page's main ListView. Let it take only
-            // the space its rows need and let the parent handle scrolling.
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.only(top: 10, bottom: 50),
-            itemBuilder: (context, index) {
-              Task currentTask = taskList[index];
-              return taskTile(updateState, currentTask, context);
+            onChanged: (value) {
+              searchList = widget.taskList
+                  .where(
+                    (element) => element.name.toLowerCase().contains(
+                      value.toLowerCase(),
+                    ),
+                  )
+                  .toList();
+              setState(() {});
             },
-            itemCount: taskList.length,
           ),
-        ] else ...[
-          const SizedBox(height: 50),
-          Center(
-            child: Lottie.asset(AppAnimations.nothingAnimation, height: 250),
-          ),
-          Center(
-            child: Text(
-              "No tasks yet",
-              style: GoogleFonts.googleSansFlex(
-                color: AppColors.mutedText,
-                fontSize: 30,
+
+          if ((searchController.text.isNotEmpty && searchList.isEmpty) ||
+              widget.taskList.isEmpty) ...[
+            const SizedBox(height: 50),
+            Center(
+              child: Lottie.asset(AppAnimations.nothingAnimation, height: 250),
+            ),
+            Center(
+              child: Text(
+                "No tasks yet",
+                style: GoogleFonts.googleSansFlex(
+                  color: AppColors.mutedText,
+                  fontSize: 30,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 50),
+            const SizedBox(height: 50),
+          ] else ...[
+            ListView.builder(
+              // This list is inside the page's main ListView. Let it take only
+              // the space its rows need and let the parent handle scrolling.
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.only(top: 10, bottom: 50),
+              itemBuilder: (context, index) {
+                final Task currentTask = searchController.text.isEmpty
+                    ? widget.taskList[index]
+                    : searchList[index];
+                return taskTile(
+                  widget.updateState,
+                  currentTask,
+                  context,
+                  widget.openModalSheet,
+                  index,
+                );
+              },
+              itemCount: searchController.text.isEmpty
+                  ? widget.taskList.length
+                  : searchList.length,
+            ),
+          ],
         ],
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }
