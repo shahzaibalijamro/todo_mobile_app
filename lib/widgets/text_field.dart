@@ -101,11 +101,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
         controller: widget.controller,
         cursorColor: AppColors.mutedText,
         textAlignVertical: TextAlignVertical.center,
-        cursorHeight: 16,
+        cursorHeight: 14,
         autofocus: widget.autoFocused,
         style: GoogleFonts.googleSansFlex(
           color: AppColors.darkNavyText,
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: const FontWeight(500),
         ),
         decoration: InputDecoration(
