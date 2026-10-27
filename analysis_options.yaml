@@ -13,3 +13,4 @@ analyzer:
     - android/**
     - ios/**
     - web/**
+    - windows/**

@@ -63,7 +63,21 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.backgroundColor,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primaryPurple,
+        shape: CircleBorder(),
+        onPressed: () {
+          // openModalSheet();
+        },
+        child: const Icon(
+          Icons.add,
+          color: AppColors.whiteCards,
+          size: 35,
+        ),
+      ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         enableFeedback: true,

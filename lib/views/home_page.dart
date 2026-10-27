@@ -97,12 +97,13 @@ class _TaskScreenState extends State<TaskScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          openModalSheet();
-        },
-        child: const Icon(Icons.add),
-      ),
+
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     openModalSheet();
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
       body: SafeArea(
         child: ListView(
           children: [
