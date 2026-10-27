@@ -84,10 +84,10 @@ class _MyAppBarState extends State<MyAppBar> {
                 const CircleAvatar(
                   backgroundColor: AppColors.paleLavender,
                   // backgroundImage: AssetImage("assets/images/image.png"),
-                  radius: 25,
+                  radius: 32,
                   child: Icon(
                     Icons.person,
-                    size: 38,
+                    size: 46,
                     color: AppColors.primaryPurple,
                   ),
                 ),
@@ -109,7 +109,7 @@ class _MyAppBarState extends State<MyAppBar> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Good ${isMorningOrAfterNoon()}, $widget.username",
+                        "Good ${isMorningOrAfterNoon()}, ${widget.username}",
                         maxLines: 2,
                         style: GoogleFonts.googleSansFlex(
                           fontWeight: FontWeight.w700,
