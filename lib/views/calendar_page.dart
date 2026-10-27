@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/views/layout_page.dart';
+import 'package:todo_app/widgets/app_bar.dart';
 
 class CalendarScreen extends StatefulWidget {
   const new({super.key});
@@ -10,6 +12,8 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Calendar Page"));
+    return ListView(
+      children: const [MyAppBar(page: Screen.calendar)],
+    );
   }
 }

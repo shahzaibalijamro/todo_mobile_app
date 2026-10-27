@@ -107,7 +107,7 @@ class _TaskScreenState extends State<TaskScreen> {
       body: SafeArea(
         child: ListView(
           children: [
-            customAppBar(username: widget.user.name),
+            MyAppBar(username: widget.user.name),
             ProgressSection(taskList: taskList),
             TasksSection(
               openModalSheet: openModalSheet,

@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          customAppBar(page: Screen.profile),
+          const MyAppBar(page: Screen.profile),
           const SizedBox(height: 10),
           Column(
             children: [

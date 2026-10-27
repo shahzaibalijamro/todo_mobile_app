@@ -68,7 +68,7 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primaryPurple,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: () {
           // openModalSheet();
         },
@@ -78,11 +78,12 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
           size: 35,
         ),
       ),
-      body: screens[currentIndex],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: screens[currentIndex],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         enableFeedback: true,
-        selectedLabelStyle: GoogleFonts.googleSansFlex(fontSize: 14),
-        unselectedLabelStyle: GoogleFonts.googleSansFlex(fontSize: 14),
         showSelectedLabels: false,
         selectedItemColor: AppColors.primaryPurple,
         unselectedItemColor: AppColors.mutedText,
@@ -100,8 +101,14 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             icon: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.home),
-                const Text("Home"),
+                const Icon(Icons.home_filled),
+                Text(
+                  "Home",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.mutedText,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -116,8 +123,14 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             label: "Home",
             activeIcon: Column(
               children: [
-                const Icon(Icons.home),
-                const Text("Home"),
+                const Icon(Icons.home_filled),
+                Text(
+                  "Home",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.primaryPurple,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -134,7 +147,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             icon: Column(
               children: [
                 const Icon(Icons.calendar_today_outlined),
-                const Text("Calendar"),
+                Text(
+                  "Calendar",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.mutedText,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -150,7 +169,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             activeIcon: Column(
               children: [
                 const Icon(Icons.calendar_today_outlined),
-                const Text("Calendar"),
+                Text(
+                  "Calendar",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.primaryPurple,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -167,7 +192,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             icon: Column(
               children: [
                 const Icon(Symbols.circle_circle),
-                const Text("Focus"),
+                Text(
+                  "Focus",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.mutedText,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -183,7 +214,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             activeIcon: Column(
               children: [
                 const Icon(Symbols.circle_circle),
-                const Text("Focus"),
+                Text(
+                  "Focus",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.primaryPurple,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -200,7 +237,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             icon: Column(
               children: [
                 const Icon(Icons.person),
-                const Text("Profile"),
+                Text(
+                  "Profile",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.mutedText,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,
@@ -216,7 +259,13 @@ class _LayoutPageScreenState extends State<LayoutPageScreen> {
             activeIcon: Column(
               children: [
                 const Icon(Icons.person),
-                const Text("Profile"),
+                Text(
+                  "Profile",
+                  style: GoogleFonts.googleSansFlex(
+                    fontWeight: const FontWeight(600),
+                    color: AppColors.primaryPurple,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Container(
                   width: 25,

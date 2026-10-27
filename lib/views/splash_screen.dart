@@ -209,7 +209,7 @@ class _SplashScreenState extends State<SplashScreen>
                           Text(
                             "Organize your day with ease",
                             style: GoogleFonts.googleSansFlex(
-                              fontSize: 15,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: AppColors.mutedText,
                               letterSpacing: 0.1,

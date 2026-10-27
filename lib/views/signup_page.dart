@@ -122,7 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   Positioned(
-                    top: 5,
+                    top: 2,
                     left: -18,
                     child: Transform.rotate(
                       angle: math.pi / 5,
@@ -149,7 +149,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: GoogleFonts.googleSansFlex(
                     color: AppColors.darkNavyText,
                     fontWeight: FontWeight.w700,
-                    fontSize: 35,
+                    fontSize: 32,
                     // height: 1.0,
                   ),
                 ),
@@ -158,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: GoogleFonts.googleSansFlex(
                     color: AppColors.mutedText,
                     fontWeight: FontWeight.w500,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
               ],
